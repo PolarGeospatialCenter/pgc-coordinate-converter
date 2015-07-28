@@ -1,0 +1,30 @@
+{
+  "name": "pgc-coordinate-converter",
+  "version": "1.0.0",
+  "description": "Web application for converting geographic coordinates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolarGeospatialCenter/pgc-coordinate-converter.git"
+  },
+  "keywords": [
+    "PGC",
+    "Polar",
+    "Geospatial",
+    "Center",
+    "geographic",
+    "coordinates",
+    "coordinate",
+    "converter",
+    "Antarctica"
+  ],
+  "author": "Brad Herried <herri147@umn.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PolarGeospatialCenter/pgc-coordinate-converter/issues"
+  },
+  "homepage": "https://github.com/PolarGeospatialCenter/pgc-coordinate-converter"
+}
