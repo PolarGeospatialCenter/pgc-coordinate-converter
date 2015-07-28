@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PGC Coordinate Conversion Tool</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/converter.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="container">
+  <div>
+    <h4>PGC Coordinate Converter</h4>
+    <p>Enter values into the coordinate tool and the values will automatically update. For decimal degrees, remember to include the negative sign for south and west coordinates!</p><br/>
+    <form id="convertCoordinatesForm" class="form-horizontal container-fluid">
+      <div class="row-fluid">
+        <!-- Decimal Degrees -->
+        <div class="well well-sm col-md-6">
+          <label><strong>Decimal Degrees</strong></label>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for"inputLatDD">Latitude</label>
+            <div class="col-sm-5">
+              <input id="inputLatDD" data-coord-type="latlon" data-message="Latitude (DD): " required name="dd" value="0" type="number" min="-90" max="90" maxlength="10" step="any" class="form-control"/>
+            </div>
+            <span class="form-accent">°</span>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-lable" for"inputLonDD">Longitude</label>
+            <div class="col-sm-5">
+              <input id="inputLonDD" data-coord-type="latlon" data-message="Longitude (DD): " required name="dd" value="0" type="number" min="-180" max="180" maxlength="11" step="any" class="form-control"/>
+            </div>
+            <span class="form-accent">°</span>
+          </div>
+        </div>
+        <!-- Degrees Decimal Minutes -->
+        <div class="well well-sm col-md-6">
+          <label><strong>Degrees Decimal Minutes</strong></label>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for"inputLatDDMdeg">Latitude</label>
+            <div class="col-sm-2">
+              <input id="inputLatDDMdeg" data-coord-type="latlon" data-message="Latitude (DDM): " pattern="[0-9]" required name="ddm" type="number" min="0" max="90" maxlength="2" step="1" value="0" class="form-control"/>
+            </div>
+            <span class="form-accent">°</span>
+            <div class="col-sm-2">
+              <input id="inputLatDDMmin" data-coord-type="latlon" data-message="Latitude (DDM): " pattern="[0-9]*[.]?[0-9]" required name="ddm" type="number" min="0" max="59.999999" maxlength="9" step="any" value="0.0" class="form-control"/>
+            </div>
+            <span class="form-accent">'</span>
+            <div class="col-sm-2">
+              <select id="inputLatDDMdir" data-coord-type="latlon" data-message="Latitude (DDM): "  required name="ddm" value="S" class="form-control">
+                <option value="S">S</option>
+                <option value="N">N</option>
+              </select>
+            </div>
+          </div><!--form-group-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for"inputLonDDMdeg">Longitude</label>
+            <div class="col-sm-2">
+              <input id="inputLonDDMdeg" data-coord-type="latlon" data-message="Longitude (DDM): " pattern="[0-9]" required name="ddm" type="number" min="0" max="180" maxlength="3" value="0" step="1" class="form-control"/>
+            </div>
+            <span class="form-accent">°</span>
+            <div class="col-sm-2">
+              <input id="inputLonDDMmin" data-coord-type="latlon" data-message="Longitude (DDM): " pattern="[0-9]*[.]?[0-9]" required name="ddm" type="number" min="0" max="59.999999" maxlength="9" step="any" value="0.0" class="form-control"/>
+            </div>
+            <span class="form-accent">'</span>
+            <div class="col-sm-2">
+              <select id="inputLonDDMdir" data-coord-type="latlon" data-message="Longitude (DDM): "  required name="ddm" value="E" class="form-control">
+                <option value="E">E</option>
+                <option value="W">W</option>
+              </select>
+            </div>
+          </div><!--form-group-->
+        </div><!--well-->
+      </div><!--row-fluid-->
+      <div class="row-fluid">
+        <!-- Degrees Minutes Seconds -->
+        <div class="well well-sm col-md-6">
+          <label><strong>Degrees Minutes Seconds</strong></label>
+          <div class="form-group">
+            <label class="control-label" for"inputLatDMSdeg">Latitude</label>
+            <div class="controls">
+              <input id="inputLatDMSdeg" data-coord-type="latlon" data-message="Latitude (DMS): " pattern="[0-9]" required name="dms" type="number" min="0" max="90" maxlength="2" value="0" step="1" class="span3 span2digit"/> °
+              <input id="inputLatDMSmin" data-coord-type="latlon" data-message="Latitude (DMS): " pattern="[0-9]" required name="dms" type="number" min="0" max="59" value="0" maxlength="2" step="1" class="span3 span2digit"/> '
+              <input id="inputLatDMSsec" data-coord-type="latlon" data-message="Latitude (DMS): " pattern="[0-9]*[.]?[0-9]" required  name="dms" type="number" min="0" max="59.9999" value="0.0" maxlength="7" step="any" class="input-mini"/> "
+              <select id="inputLatDMSdir" data-coord-type="latlon" data-message="Latitude (DMS): " required  name="dms" value="S" class="dropdown"/>
+                <option value="S">S</option>
+                <option value="N">N</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for"inputLonDMSdeg">Longitude</label>
+            <div class="controls">
+              <input id="inputLonDMSdeg" data-coord-type="latlon" data-message="Longitude (DMS): " pattern="[0-9]" required  name="dms" type="number" min="0" max="180" maxlength="3" value="0" step="1" class="span3 span2digit"/> °
+              <input id="inputLonDMSmin" data-coord-type="latlon" data-message="Longitude (DMS): " pattern="[0-9]" required  name="dms" type="number" min="0" max="59" maxlength="2" value="0" step="1" class="span3 span2digit"/> '
+              <input id="inputLonDMSsec" data-coord-type="latlon" data-message="Longitude (DMS): " pattern="[0-9]*[.]?[0-9]" required  name="dms" type="number" min="0" max="59.9999" maxlength="7" step="any" value="0.0" class="input-mini"/> "
+              <select id="inputLonDMSdir" data-coord-type="latlon" data-message="Longitude (DMS): " required  name="dms" value="E" class="dropdown">
+                <option value="E">E</option>
+                <option value="W">W</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- WGS84 Antarctic Polar Stereographic EPSG:3031 -->
+        <div class="well well-sm col-md-6">
+          <label><strong>WGS84 Antarctic Polar Stereographic (EPSG:3031)</strong></label>
+          <div class="form-group">
+            <label class="control-label" for"inputLatAPS">Y (northing)</label>
+            <div class="controls">
+              <input id="inputLatAPS" data-coord-type="projected" data-message="Y (EPGS:3031): " pattern="[-]?[0-9]*[.]?[0-9]+" required name="aps" value="0.0" type="number" maxlength="15" step="1" class="span9"/> meters
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for"inputLonAPS">X (easting)</label>
+            <div class="controls">
+              <input id="inputLonAPS" data-coord-type="projected" data-message="X (EPGS:3031): " pattern="[-]?[0-9]*[.]?[0-9]+" required name="aps" value="0.0" type="number" maxlength="15" step="1" class="span9"/> meters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="coordinateAlert" class="alert alert-error">
+        <p><strong>Invalid Entry! </strong>Please double-check input values marked in red.</p>
+        <ul class="unstyled" id="coordinateAlertMessages"></ul>
+      </div>
+      <p>
+        <button id="resetFormButton" class="btn btn-mini" type="button">Reset Form</button>
+        <a id="gmapsButton" class="btn btn-mini" href="http://maps.google.com/" target="_blank">View on Google Maps</a>
+      </p>
+
+      <hr>
+
+      <h6>Use the table below if you wish to copy &amp; paste the values into another application.</h6>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Latitude / Y</th>
+            <th>Longitude / X</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Decimal Degrees (DD)</td>
+            <td id="ddLatText">-</td>
+            <td id="ddLonText">-</td>
+          </tr>
+          <tr>
+            <td>Degrees Decimal Minutes (DDM)</td>
+            <td id="ddmLatText">-</td>
+            <td id="ddmLonText">-</td>
+          </tr>
+          <tr>
+            <td>Degrees Minutes Seconds (DMS)</td>
+            <td id="dmsLatText">-</td>
+            <td id="dmsLonText">-</td>
+          </tr>
+          <tr>
+            <td>WGS84 Antarctic Polar Stereographic (EPSG:3031)</td>
+            <td id="apsLatText">-</td>
+            <td id="apsLonText">-</td>
+          </tr>
+          <tr>
+            <td>ISO 6709 Standard (<small><a href="http://en.wikipedia.org/wiki/ISO_6709" target="_blank">about</a></small>)</td>
+            <td id="isoLatText">-</td>
+            <td id="isoLonText">-</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <p><small><em>Please note: This application requires JavaScript to be enabled (default on most browsers)</em></small></p>
+    </form>
+  </div>
+</div>
+<script src="js/converter.js"></script>
+</body>
+</html>
